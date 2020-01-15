@@ -1106,7 +1106,7 @@ for tempgbk in glob.glob("CONTIG_*.gbk"):
 	os.remove(tempgbk)
  
 ## Preparing sequences for GenBank submission (Original code from Wan Yu's gbk2tbl.py script [https://github.com/wanyuac/BINF_toolkit/blob/master/gbk2tbl.py])
-allowed_qualifiers = ['locus_tag', 'gene', 'product', 'pseudo', 'protein_id', 'gene_desc', 'old_locus_tag', 'note', 'inference', 'organism', 'mol_type', 'strain', 'sub_species', 'isolation-source', 'country']
+allowed_qualifiers = ['locus_tag', 'gene', 'product', 'pseudo', 'protein_id', 'gene_desc', 'old_locus_tag', 'note', 'inference', 'organism', 'mol_type', 'strain', 'sub_species', 'isolation-source', 'country', 'rpt_type']
 with open(args.modifiers, "rU") as modifiers, open("%s.gbk" % root_output, "r") as genbank_fh, open("%s.fasta" % root_output, "w") as fasta_fh, open("%s.tbl" % root_output, "w") as feature_fh: 
 	info = modifiers.readline()
 	wholelist = list(SeqIO.parse(genbank_fh, 'genbank'))

@@ -323,7 +323,6 @@ with open("logfile.txt", "a") as logfile:
 						Corrseq = str(record.seq[int(genomeshape[record.id]['length'])//2:-int(genomeshape[record.id]['length'])//2])
 						Newseq = SeqRecord(Seq(Corrseq, IUPAC.ambiguous_dna), id = record.description)
 						SeqIO.write(Newseq, correctedcircular, "fasta")
-						eprint(Corrseq)
 					os.rename("temp.fasta", "temp2.fasta")
 				eprint("%s seems to be a %s contig according to LASTZ" % (record.id, genomeshape[record.id]['genomeshape']))
 				logfile.write("%s\t%s\n" % (record.id, genomeshape[record.id]['genomeshape']))
@@ -344,6 +343,7 @@ with open("logfile.txt", "a") as logfile:
 				firstpartseq = str(gotocircularize.seq[valoric:-1])
 				secondpartseq = str(gotocircularize.seq[0:(valoric-1)])
 				combinedcorrectedseq = SeqRecord(Seq(firstpartseq + secondpartseq, IUPAC.ambiguous_dna), id = gotocircularize.description)
+				eprint(combinedcorrectedseq)
 				SeqIO.write(combinedcorrectedseq, newfile, "fasta")
 			else:
 				eprint("VIGA was unable to predict the origin of replication: %s was not modified!" % record.id)

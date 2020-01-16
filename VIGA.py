@@ -343,7 +343,7 @@ with open("logfile.txt", "a") as logfile:
 				firstpartseq = str(gotocircularize.seq[valoric:-1])
 				secondpartseq = str(gotocircularize.seq[0:(valoric-1)])
 				combinedcorrectedseq = SeqRecord(Seq(firstpartseq + secondpartseq, IUPAC.ambiguous_dna), id = gotocircularize.description)
-				eprint(combinedcorrectedseq)
+				eprint(Seq(firstpartseq + secondpartseq, IUPAC.ambiguous_dna))
 				SeqIO.write(combinedcorrectedseq, newfile, "fasta")
 			else:
 				eprint("VIGA was unable to predict the origin of replication: %s was not modified!" % record.id)

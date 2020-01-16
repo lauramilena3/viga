@@ -323,6 +323,7 @@ with open("logfile.txt", "a") as logfile:
 						Corrseq = str(record.seq[int(genomeshape[record.id]['length'])//2:-int(genomeshape[record.id]['length'])//2])
 						Newseq = SeqRecord(Seq(Corrseq, IUPAC.ambiguous_dna), id = record.description)
 						SeqIO.write(Newseq, correctedcircular, "fasta")
+						eprint(Corrseq)
 					os.rename("temp.fasta", "temp2.fasta")
 				eprint("%s seems to be a %s contig according to LASTZ" % (record.id, genomeshape[record.id]['genomeshape']))
 				logfile.write("%s\t%s\n" % (record.id, genomeshape[record.id]['genomeshape']))
